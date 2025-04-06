@@ -1,0 +1,131 @@
+/* SingleModelPage.css */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .single-model-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .model-canvas-container {
+    width: 100%;
+    height: 500px;
+    background-color: #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .model-info {
+    background: #fff;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .model-info h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #111;
+  }
+  
+  .color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .color-picker input[type="color"] {
+    border: none;
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #0057ff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #003cb3;
+  }
+  
+  .ar-button {
+    background-color: #1eb980;
+  }
+  
+  .ar-button:hover {
+    background-color: #168f63;
+  }
+  
+  .back-button {
+    background-color: #6c757d;
+  }
+  
+  .back-button:hover {
+    background-color: #565e64;
+  }
+  
+  .qr-code-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .qr-code-section p {
+    margin: 0;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .model-canvas-container {
+      height: 300px;
+    }
+  
+    .model-info {
+      padding: 1.5rem;
+    }
+  
+    .model-info h1 {
+      font-size: 1.5rem;
+    }
+  
+    button {
+      font-size: 0.9rem;
+    }
+  }
+  

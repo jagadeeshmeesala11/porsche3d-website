@@ -1,0 +1,35 @@
+.footer-container{
+    background-color: rgb(16, 11, 44);
+    height: 50vh;
+    width: 100vw;
+}
+
+.footer_head{
+    color: white;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+   padding-top: 3%;
+    gap: 20;
+    height: 30vh;
+    width: 100vw;
+}
+
+.footer_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+li{
+    list-style: none;
+    margin-top: 5%;
+    color: white;
+    cursor: pointer;
+}
+
+li:hover{
+    color: pink;
+}

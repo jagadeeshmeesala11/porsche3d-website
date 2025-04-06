@@ -1,0 +1,11 @@
+Model Information:
+* title:	Detailed Porsche logo
+* source:	https://sketchfab.com/3d-models/detailed-porsche-logo-c69d9223a21846119647223b519ecfc4
+* author:	Twardun (https://sketchfab.com/Twardunger)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Detailed Porsche logo" (https://sketchfab.com/3d-models/detailed-porsche-logo-c69d9223a21846119647223b519ecfc4) by Twardun (https://sketchfab.com/Twardunger) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
