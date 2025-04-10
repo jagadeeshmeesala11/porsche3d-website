@@ -9,7 +9,8 @@ import "./header.css";
 
 const HeaderComponent = () => {
   return (
-    <nav className="navbar_container_main">
+    <div className="header-container">
+      <nav className="navbar_container_main">
       <div className="nav_head">
         <Link to='/' className="logo" style={{ textDecoration: "none", color:'white'}}>Porsche</Link>
       </div>
@@ -21,6 +22,7 @@ const HeaderComponent = () => {
         <li><a href="#">AR ShowCase</a></li>
       </ul>
     </nav>
+    </div>
   );
 };
 

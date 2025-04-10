@@ -30,8 +30,7 @@
     transform: translateX(-50%);
     color: white;
     z-index: 1;
-    left: 46%;
-    top: 5%;
+    left: 50%;
 }
 
 .heading_car {
@@ -57,9 +56,12 @@
     margin-top: 20%;
 }
 
-.view-btn:hover {
+.view-btn:hover{
     background: white;
     color: black;
     transform: scale(1.1);
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+}
+.btn-view{
+    margin-top: 20%;
 }

@@ -1,28 +1,147 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
+import React, { Suspense, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
-import * as THREE from "three";
-import QRCode from "react-qr-code";
+import HeaderComponent from "../Header/HeaderComponent";
+import Loader from "../LoaderComponent/Loader";
 import "./SingleModelPage.css";
 
 const modelData = [
-  { id: 1, name: "Porsche Macan", file: "/models/porsche_macan.glb", scale: 70, position: [0, -1, 0] },
-  { id: 2, name: "Porsche Taycan", file: "/models/porshe_taycan.glb", scale: 0.6, position: [0, -0.5, 0] },
-  { id: 3, name: "Porsche 718 Cayman", file: "/models/porsche718cayman.glb", scale: 70, position: [0, -0.5, 0] },
-  { id: 4, name: "Porsche Panamera", file: "/models/2022_porsche_cayenne_turbo_gt.glb", scale: 70, position: [0, -0.5, 0] },
-  { id: 5, name: "Porsche 911 Carrera", file: "/models/free_porsche_911_carrera_4s.glb", scale: 0.8, position: [0, 0.5, 0] },
-  { id: 6, name: "Porsche Boxster", file: "/models/Porsche Boxster.glb", scale: 0.75, position: [0, -0.2, 0] },
+  {
+    id: 1,
+    name: "Porsche Macan",
+    file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porschecarmodels/2017_porsche_macan_gts.glb",
+    scale: 80,
+    position: [0, -1, 0],
+    qr:'https://i.ibb.co/S7RTMKcX/macan.png',
+    price: "96.05 Lakh",
+    full: "https://i.ibb.co/ds6xWV2m/full-car.jpg",
+    wheels: "https://i.ibb.co/KxRXMrJg/wheels.jpg",
+    engine: "https://i.ibb.co/p67gfMt1/engine.jpg",
+    
+    mileage: "6 kmpl",
+    fuelType: "Petrol",
+    engineSpec: "2894cc",
+    cylinders: "6",
+    maxPower: "434.49bhp@5700-6600rpm",
+    maxTorque: "550Nm@1900-5600rpm",
+    seatingCapacity: "5",
+    fuelTankCapacity: "65 liters"
+  },
+  {
+    id: 3,
+    name: "Porsche 718 Cayman",
+    file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porchesmodel_2/porsche718cayman.glb",
+    scale: 80,
+    position: [0, -0.5, 0],
+    qr:'https://i.ibb.co/8nqJ4dxS/model-4.png',
+    price: "89.95 Lakh",
+    full: "https://i.ibb.co/YFLYDcpf/full-car.jpg",
+    wheels: "https://i.ibb.co/RpRqH0Y4/chassis.jpg",
+    engine: "https://i.ibb.co/9H5sBH6V/engine.jpg",
+    
+    mileage: "9.17 kmpl",
+    fuelType: "Petrol",
+    engineSpec: "2894cc",
+    cylinders: "6",
+    maxPower: "493.49bhp@8400rpm",
+    maxTorque: "550Nm@1900-5600rpm",
+    seatingCapacity: "2",
+    fuelTankCapacity: "64 liters"
+  },
+  {
+    id: 4,
+    name: "Porsche Panamera",
+    file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porschecarmodels/2022_porsche_cayenne_turbo_gt.glb",
+    scale: 80,
+    position: [0, -0.5, 0],
+    qr:'https://i.ibb.co/8nqJ4dxS/model-4.png',
+    price: "1.70 - 2.34 Cr",
+    full: "https://i.ibb.co/cST63D9M/full-car.jpg",
+  
+    wheels: "https://i.ibb.co/KxRXMrJg/wheels.jpg",
+    engine: "https://i.ibb.co/p67gfMt1/engine.jpg",
+    
+   
+    mileage: "6 kmpl",
+    fuelType: "Petrol",
+    engineSpec: "3996cc",
+    cylinders: "6",
+    maxPower: "670.51bhp",
+    maxTorque: "930Nm",
+    seatingCapacity: "4",
+    fuelTankCapacity: "64 liters"
+  },
+  {
+    id: 5,
+    name: "Porsche 911 Carrera",
+    file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porschecarmodels/2018_porsche_911.glb",
+    scale: 80,
+    position: [0, 0, 0],
+
+    qr:'https://i.ibb.co/S7QNnQj7/911.png',
+    price: "1.99 Cr",
+    full: "https://ibb.co/xSDmgdr9",
+    wheels: "https://i.ibb.co/KxRXMrJg/wheels.jpg",
+    engine: "https://i.ibb.co/p67gfMt1/engine.jpg",
+   
+    mileage: "9.17 kmpl",
+    fuelType: "Petrol",
+    engineSpec: "3996cc",
+    cylinders: "6",
+    maxPower: "517.63bhp@8500-9000rpm",
+    maxTorque: "465Nm@6300rpm",
+    seatingCapacity: "2,4",
+    fuelTankCapacity: "64 liters"
+  },
+  {
+    id: 6,
+    name: "Porsche Boxster",
+    file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porchesmodel_2/Porsche%20Boxster.glb",
+    scale: 0.75,
+    position: [0, -0.2, 0],
+    qr:'https://i.ibb.co/8nqJ4dxS/model-4.png',
+    price: "92 Lakh",
+
+    full: "https://i.ibb.co/5g4pZ18x/Screenshot-2025-04-08-195734.png",
+    wheels: "https://i.ibb.co/KxRXMrJg/wheels.jpg",
+    engine: "https://i.ibb.co/p67gfMt1/engine.jpg",
+
+    mileage: "8.6 kmpl",
+    fuelType: "Petrol",
+    engineSpec: "3997cc",
+    cylinders: "6",
+    maxPower: "493.49bhp@8400rpm",
+    maxTorque: "450Nm@6750rpm",
+    seatingCapacity: "2",
+    fuelTankCapacity: "64 liters"
+  }
 ];
 
 function ModelViewer({ path, scale, position, color }) {
   const { scene } = useGLTF(path);
+
+  scene.rotation.y = Math.PI / 2;
   scene.traverse((child) => {
     if (child.isMesh) {
       child.material = child.material.clone();
-      child.material.color.set(color);
+      const name = child.userData.name || child.name || "";
+      if (name.includes("car_porsche_macangts_2015_Mesh:M_Paint_Metal_High_carpaint_0")) {
+        child.material.color.set(color);
+      } else if (name.includes("boot.011_0") && !name.includes("windshield_0")) {
+        child.material.color.set(color);
+        child.material.metalness = 0;
+        child.material.roughness = 0.5;
+      } else if (name.includes("Material2.001")) {
+        child.material.color.set(color);
+        child.material.metalness = 0;
+        child.material.roughness = 0.41;
+      } else {
+        child.material.color.set(color);
+      }
     }
   });
+
   return <primitive object={scene} scale={scale} position={position} />;
 }
 
@@ -33,112 +152,97 @@ function CameraAutoRotate({ enabled }) {
       controlsRef.current.update();
     }
   });
-  return <OrbitControls ref={controlsRef} autoRotate={enabled} />;
+  return <OrbitControls ref={controlsRef} autoRotate={enabled} autoRotateSpeed={-1} />;
 }
 
 export default function SingleModelPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const shouldStartAR = searchParams.get("startAR") === "true";
-  const model = modelData.find((m) => m.id === parseInt(id));
+  const model = modelData.find((m) => m.id === parseInt(id, 10));
+
   const [color, setColor] = useState("#ffffff");
   const [autoRotate, setAutoRotate] = useState(false);
   const rendererRef = useRef(null);
-  const currentURL = `https://91ba-2401-4900-6741-b7f2-6899-a6a1-5800-2e4f.ngrok-free.app/model/${id}?startAR=true`;
-
-  useEffect(() => {
-    if (!shouldStartAR) return;
-
-    if (!navigator.xr) {
-      alert("WebXR not supported. Use Chrome on Android.");
-      return;
-    }
-
-    navigator.xr.isSessionSupported("immersive-ar").then((supported) => {
-      if (supported) {
-        startAR();
-      } else {
-        alert("AR not supported on this device.");
-      }
-    });
-  }, [shouldStartAR]);
-
-  const startAR = async () => {
-    try {
-      const session = await navigator.xr.requestSession("immersive-ar", {
-        requiredFeatures: ["hit-test", "local-floor"],
-      });
-
-      const renderer = rendererRef.current;
-      if (!renderer) {
-        console.error("Renderer not initialized.");
-        return;
-      }
-
-      renderer.xr.enabled = true;
-      renderer.xr.setReferenceSpaceType("local");
-      await renderer.xr.setSession(session);
-
-      renderer.setAnimationLoop(() => {
-        renderer.render(renderer.scene, renderer.camera);
-      });
-    } catch (err) {
-      console.error("AR session error:", err);
-      alert("AR start failed: " + err.message);
-    }
-  };
+  const canvasRef = useRef(null);
 
   if (!model) return <div>Model not found</div>;
 
   return (
     <div className="single-model-page">
-      <div className="model-canvas-container">
-        <Canvas
-          onCreated={({ gl, scene, camera }) => {
-            rendererRef.current = gl;
-            gl.xr.enabled = false;
-            gl.scene = scene;
-            gl.camera = camera;
-          }}
-          camera={{ position: [0, 1.5, 5], fov: 40 }}
-        >
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.6} />
-            <directionalLight position={[10, 10, 5]} intensity={1.2} />
-            <Environment preset="city" />
-            <ModelViewer
-              path={model.file}
-              scale={model.scale}
-              position={model.position}
-              color={color}
+      <HeaderComponent className="header" />
+
+      <div className="model-container">
+        <div className="model-canvas-container" ref={canvasRef}>
+          <Canvas
+            onCreated={({ gl }) => {
+              rendererRef.current = gl;
+              gl.xr.enabled = false;
+            }}
+            camera={{ position: [0, 1.5, 5], fov: 40 }}
+          >
+            <Suspense fallback={<Loader />}>
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[10, 10, 5]} intensity={1.2} />
+              <Environment preset="city" />
+              <ModelViewer
+                path={model.file}
+                scale={model.scale}
+                position={model.position}
+                color={color}
+              />
+              <CameraAutoRotate enabled={autoRotate} />
+            </Suspense>
+          </Canvas>
+        </div>
+
+        <div className="model-info">
+          <h1 className="title">{model.name}</h1>
+          <div className="color-picker">
+            <label>Choose Color:</label>
+            <input
+              className="color-input"
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
             />
-            <CameraAutoRotate enabled={autoRotate} />
-          </Suspense>
-        </Canvas>
+          </div>
+          <button className="rotate-button" onClick={() => setAutoRotate((prev) => !prev)}>
+            {autoRotate ? "Stop Rotation" : "Auto Rotate"}
+          </button>
+          <button className="back-button" onClick={() => navigate(-1)}>
+            ⬅ Back to All Models
+          </button>
+          <div>
+            <img src={model.qr} alt="qr" className="qr-code" />
+          </div>
+          <h3>Scan the QR code for an AR experience</h3>
+        </div>
       </div>
 
-      <div className="model-info">
-        <h1>{model.name}</h1>
-        <div className="color-picker">
-          <label>Choose Color:</label>
-          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
-        </div>
-        <button onClick={() => setAutoRotate((prev) => !prev)}>
-          {autoRotate ? "Stop Rotation" : "Auto Rotate"}
-        </button>
-        <button className="ar-button" onClick={startAR}>
-          Start AR
-        </button>
-        <div className="qr-code-section">
-          <p>Scan to View in AR</p>
-          <QRCode value={currentURL} size={128} />
-          <p style={{ fontSize: "0.8rem", wordBreak: "break-word" }}>{currentURL}</p>
-        </div>
-        <button className="back-button" onClick={() => navigate(-1)}>
-          ⬅ Back to All Models
-        </button>
+      <div className="car-details-page">
+  <div className="Details-container">
+    <div className="details-card">
+      <h2 className="model-name">{model.name}</h2>
+      <ul className="details-list">
+        <li><strong>Mileage:</strong> {model.mileage}</li>
+        <li><strong>Engine:</strong> {model.engineSpec}</li>
+        <li><strong>Fuel Type:</strong> {model.fuelType}</li>
+        <li><strong>Price:</strong> {model.price}</li>
+        <li><strong>Cylinders:</strong> {model.cylinders}</li>
+        <li><strong>Max Power:</strong> {model.maxPower}</li>
+        <li><strong>Max Torque:</strong> {model.maxTorque}</li>
+        <li><strong>Seating Capacity:</strong> {model.seatingCapacity}</li>
+        <li><strong>Fuel Tank Capacity:</strong> {model.fuelTankCapacity}</li>
+      </ul>
+      
+    </div>
+    <div>
+        <img src={model.full} alt="full car" className="full-car" />
       </div>
+  </div>
+</div>
+
+      
     </div>
   );
 }

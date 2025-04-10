@@ -1,43 +1,89 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    position: fixed;
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+  background-color: whitesmoke;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar_container_main{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 60vw;
-    
-   
+/* Header Container */
+.header-container {
+  width: 100vw;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.logo{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
-    font-weight: bold;
-    cursor: pointer;
+/* Navbar Layout */
+.navbar_container_main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: black;
 }
 
+/* Logo */
+.logo {
+  font-family: 'Audiowide', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #FF1493;
+}
+
+/* Navigation Links */
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
-    text-decoration: none;
-    color: #cccccc;
-    transition: 0.3s;
-    font-family: Poppins;
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .nav-links li a:hover {
-    color: #FF1493;
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom: 2px solid white;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .navbar_container_main {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav-links li a {
+    width: 100%;
+    display: block;
+  }
 }
