@@ -2,6 +2,7 @@ import React, { useRef, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
 import { Link } from "react-router-dom";
+import FooterComponent from "../Footer/FooterComponent";
 
 import HeaderComponent from "../Header/HeaderComponent";
 import Loader from "../LoaderComponent/Loader";
@@ -70,6 +71,7 @@ export default function AllModelsPage() {
             <ModelCard key={model.id} model={model} />
           ))}
         </div>
+        <FooterComponent className="footer" />
       </main>
     </>
   );

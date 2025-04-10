@@ -2,6 +2,7 @@ import React, { Suspense, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
+import FooterComponent from "../Footer/FooterComponent";
 import HeaderComponent from "../Header/HeaderComponent";
 import Loader from "../LoaderComponent/Loader";
 import "./SingleModelPage.css";
@@ -220,28 +221,30 @@ export default function SingleModelPage() {
       </div>
 
       <div className="car-details-page">
-  <div className="Details-container">
-    <div className="details-card">
-      <h2 className="model-name">{model.name}</h2>
-      <ul className="details-list">
-        <li><strong>Mileage:</strong> {model.mileage}</li>
-        <li><strong>Engine:</strong> {model.engineSpec}</li>
-        <li><strong>Fuel Type:</strong> {model.fuelType}</li>
-        <li><strong>Price:</strong> {model.price}</li>
-        <li><strong>Cylinders:</strong> {model.cylinders}</li>
-        <li><strong>Max Power:</strong> {model.maxPower}</li>
-        <li><strong>Max Torque:</strong> {model.maxTorque}</li>
-        <li><strong>Seating Capacity:</strong> {model.seatingCapacity}</li>
-        <li><strong>Fuel Tank Capacity:</strong> {model.fuelTankCapacity}</li>
-      </ul>
-      
-    </div>
-    <div>
-        <img src={model.full} alt="full car" className="full-car" />
-      </div>
+      <div className="Details-container" data-aos="fade-up">
+  <div className="details-card" data-aos="zoom-in">
+    <h2 className="model-name">{model.name}</h2>
+    <ul className="details-list">
+      <li data-aos="fade-left"><strong>Mileage:</strong> {model.mileage}</li>
+      <li data-aos="fade-left" data-aos-delay="100"><strong>Engine:</strong> {model.engineSpec}</li>
+      <li data-aos="fade-left" data-aos-delay="200"><strong>Fuel Type:</strong> {model.fuelType}</li>
+      <li data-aos="fade-left" data-aos-delay="300"><strong>Price:</strong> {model.price}</li>
+      <li data-aos="fade-left" data-aos-delay="400"><strong>Cylinders:</strong> {model.cylinders}</li>
+      <li data-aos="fade-left" data-aos-delay="500"><strong>Max Power:</strong> {model.maxPower}</li>
+      <li data-aos="fade-left" data-aos-delay="600"><strong>Max Torque:</strong> {model.maxTorque}</li>
+      <li data-aos="fade-left" data-aos-delay="700"><strong>Seating Capacity:</strong> {model.seatingCapacity}</li>
+      <li data-aos="fade-left" data-aos-delay="800"><strong>Fuel Tank Capacity:</strong> {model.fuelTankCapacity}</li>
+    </ul>
   </div>
 </div>
 
+  
+    <div>
+        <img src={model.full} alt="full car" className="full-car" />
+      </div>
+  
+</div>
+            <FooterComponent className="footer" />
       
     </div>
   );

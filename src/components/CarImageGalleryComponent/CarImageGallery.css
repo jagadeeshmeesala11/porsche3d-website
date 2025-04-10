@@ -1,0 +1,126 @@
+.gallery-container {
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #f9f9f9;
+  }
+  
+  .gallery-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #222;
+  }
+  
+  .image-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .image-block.left {
+    flex-direction: row;
+  }
+  
+  .image-block.right {
+    flex-direction: row-reverse;
+  }
+  
+  .image-block.center {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .image-wrapper {
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-wrapper:hover {
+    transform: scale(1.03);
+  }
+  
+  .gallery-img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  .image-content {
+    flex: 1;
+    min-width: 280px;
+    max-width: 600px;
+  }
+  
+  .image-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .image-content p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .lightbox p {
+    color: #fff;
+    font-size: 1.1rem;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  /* Background dots */
+  .animated-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    opacity: 0.05;
+    animation: floatDots 6s ease-in-out infinite alternate;
+  }
+  
+  @keyframes floatDots {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-20px); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
