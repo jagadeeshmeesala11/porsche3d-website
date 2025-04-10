@@ -8,6 +8,20 @@ body {
   padding: 0;
 }
 
+.nav-button-link {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  padding: 0;
+}
+.nav-button-link:hover {
+  text-decoration: underline;
+}
+
+
 /* Header Container */
 .header-container {
   width: 100vw;

@@ -82,7 +82,7 @@ const modelData = [
 
     qr:'https://i.ibb.co/S7QNnQj7/911.png',
     price: "1.99 Cr",
-    full: "https://ibb.co/xSDmgdr9",
+    full: "https://i.ibb.co/Lz8QgHsj/911-CAR.jpg",
     wheels: "https://i.ibb.co/KxRXMrJg/wheels.jpg",
     engine: "https://i.ibb.co/p67gfMt1/engine.jpg",
    

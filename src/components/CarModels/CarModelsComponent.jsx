@@ -10,7 +10,7 @@ import "./carModels.css";
 // === Car Model ===
 const CarModel = () => {
   const car = useRef();
-  const { scene } = useGLTF("/models/2015_porsche_918_spyder/scene.gltf");
+  const { scene } = useGLTF("https://raw.githubusercontent.com/jagadeeshmeesala11/porchesmodel_2/main/2015_porsche_918_spyder.glb");
 
   useEffect(() => {
     scene.rotation.y = -0.5;
@@ -20,7 +20,7 @@ const CarModel = () => {
 
   useFrame(() => {
     if (car.current) {
-      car.current.rotation.y -= 0.001;
+      car.current.rotation.y -= 0.002;
     }
   });
 

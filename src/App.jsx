@@ -3,6 +3,7 @@
   import HomeComponent from './components/Home/HomeComponent';
   import ModelsPagesComponent from './components/ModelsPages/ModelsPagesComponent';
   import SingleModel from './components/SingleModelComponent/SingleModel';
+  import ARShowroomComponent from './components/ARShowroomComponent/ARShowroomComponent'
   import AOS from 'aos';
   import 'aos/dist/aos.css';
 
@@ -25,6 +26,7 @@
             <Route path='/' element={<HomeComponent/>}/>
             <Route path='/models' element={<ModelsPagesComponent/>}/>
             <Route path='/models/:id' element={<SingleModel/>}/>
+            <Route path='/ar-showroom' element={<ARShowroomComponent/>}/>
           </Routes>
         </BrowserRouter>
       </div>
