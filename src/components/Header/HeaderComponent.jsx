@@ -5,28 +5,23 @@ import "./header.css";
 const HeaderComponent = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const isHome = location.pathname === "/";
 
   const handleFeatureClick = () => {
-    if (location.pathname === "/") {
+    if (isHome) {
       const el = document.getElementById("explore-section");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      // Pass custom state to indicate scroll target
       navigate("/", { state: { scrollTo: "explore-section" } });
     }
   };
 
   return (
-    <div className="header-container">
+    <div className={`header-container ${isHome ? "home-header" : "default-header"}`}>
       <nav className="navbar_container_main">
         <div className="nav_head">
-          <Link to="/" className="logo" style={{ textDecoration: "none", color: "white" }}>
-            Porsche
-          </Link>
+          <Link to="/" className="logo">Porsche</Link>
         </div>
-
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/models">Models</Link></li>

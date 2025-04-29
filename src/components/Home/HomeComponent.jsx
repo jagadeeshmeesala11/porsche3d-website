@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import CarModelsComponent from '../CarModels/CarModelsComponent';
+import VideoContainer from '../VideoContainer/VideoContainer';
 import AdsComponent from '../AdsComponent/AdsComponent';
 import FooterComponent from '../Footer/FooterComponent';
 import CarImageGalleryComponent from '../CarImageGalleryComponent/CarImageGalleryComponent';
-import AdsComponentVideo from '../AdsComponent/AdsComponentVideo';
 import './home.css';
+import ModelsAds from '../AdsComponent/ModelsAds/Models';
+import CarModelsComponent from '../CarModels/CarModelsComponent';
 
 const HomeComponent = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const HomeComponent = () => {
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
-        }, 100); // Delay ensures DOM is ready
+        }, 100); 
       }
     }
   }, [location]);
@@ -24,14 +25,19 @@ const HomeComponent = () => {
   return (
     <div className="home-wrapper">
       <div className="page-container">
-        <CarModelsComponent />
+        <div>
+          <VideoContainer/>
+        </div>
         <div className="models_container">
           <AdsComponent />
         </div>
         <div>
-          <AdsComponentVideo />
+          <CarModelsComponent/>
         </div>
         <div id="explore-section">
+          <ModelsAds />
+        </div>
+        <div id="gallery-section">
           <CarImageGalleryComponent />
         </div>
         <FooterComponent />

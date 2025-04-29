@@ -4,21 +4,7 @@ import 'aos/dist/aos.css';
 import './CarImageGallery.css';
 
 const carImages = [
-  {
-    label: 'Front View',
-    url: 'https://i.ibb.co/7JR52Vfd/front-view.jpg',
-    description: 'Experience the bold and unmistakable front design, where form meets function.The iconic grille is engineered for optimal airflow, enhancing performance and cooling.LED matrix headlights deliver precision lighting with an aggressive, modern edge.Sculpted hood lines and wide air intakes complete a look of pure aerodynamic intent.This view captures the essence of Porsche’s racing heritage and street presence.'
-  },
-  {
-    label: 'Back View',
-    url: 'https://i.ibb.co/Q3w8rDKk/back-view.jpg',
-    description: 'A seamless LED light bar stretches across the tail, delivering a futuristic yet unmistakably Porsche signature.The active rear spoiler deploys dynamically for added performance and control.Every curve and edge is designed with intent — merging luxury aesthetics with motorsport function.It’s a bold statement that leaves a lasting impression — even as it pulls away.'
-  },
-  {
-    label: 'Side View',
-    url: 'https://i.ibb.co/Y72xn1c2/side-view.jpg',
-    description: 'A low, wide stance emphasizes performance readiness while maintaining an elegant road presence.The flared wheel arches, flowing roofline, and sharp side creases work together to reduce drag and enhance visual motion, even when the car is still.Every detail—from the frameless doors to the precision-cut alloys—reflects a commitment to both form and function.It’s the perfect balance of luxury and performance in a single glance.'
-  },
+  
   {
     label: 'Wheels',
     url: 'https://i.ibb.co/RpRqH0Y4/chassis.jpg',

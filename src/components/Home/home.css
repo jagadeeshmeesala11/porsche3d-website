@@ -29,6 +29,11 @@ section {
   align-items: center;
 }
 
+.video-container{
+  height: 100vh;
+  background-color: #000000;
+}
+
 .models_container_home {
   display: flex;
   flex-direction: column;

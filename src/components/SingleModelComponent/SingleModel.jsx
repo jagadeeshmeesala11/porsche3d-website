@@ -191,7 +191,7 @@ export default function SingleModelPage() {
                 position={model.position}
                 color={color}
               />
-              <CameraAutoRotate enabled={autoRotate} />
+              <CameraAutoRotate enabled={autoRotate} autoRotateSpeed={3} />
             </Suspense>
           </Canvas>
         </div>

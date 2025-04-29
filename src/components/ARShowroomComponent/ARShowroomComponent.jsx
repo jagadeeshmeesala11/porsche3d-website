@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderComponent from '../Header/HeaderComponent';
 import { motion } from 'framer-motion';
+import FooterComponent from '../Footer/FooterComponent';
 import './ARShowroom.css';
 
 const carModels = [
@@ -87,6 +88,9 @@ const ARShowroomComponent = () => {
             </motion.div>
           ))}
         </motion.div>
+        <div className='footer-con'>
+        <FooterComponent/>
+        </div>
       </div>
     </>
   );

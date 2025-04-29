@@ -1,0 +1,131 @@
+.models-gallery-container {
+    background: white;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+  }
+  
+  .gallery-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: black;
+  }
+  
+  .models-grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10%;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100%;
+  }
+  
+  .models-card {
+    
+    width: 35vw; 
+    height: 100vh; 
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #000; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 10%;
+  }
+  
+  .models-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .models-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .models-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+  
+  .model-name {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 2;
+    color: white !important;
+    
+  }
+  
+  .fuel-type-badge {
+    position: absolute;
+    top: 4rem;
+    left: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    backdrop-filter: blur(4px);
+  }
+  
+  .models-content {
+    position: relative;
+    z-index: 2;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  }
+  
+  .model-description {
+    margin: 1rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  .explore-button,
+  .all-models-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .explore-button{
+    padding-left: 20%;
+  }
+
+  .explore-button:hover,
+  .all-models-button:hover {
+    background: white;
+    color: black;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .models-card {
+      width: 100%; /* Make cards full width on smaller screens */
+    }
+    .models-grid {
+      flex-direction: column; /* Stack cards vertically */
+    }
+  }
+  

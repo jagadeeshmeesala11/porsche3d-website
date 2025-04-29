@@ -1,117 +1,80 @@
-import React, { useRef, useMemo, useState, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls } from "@react-three/drei";
-import {Link} from 'react-router-dom';
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-
-import HeaderComponent from "../Header/HeaderComponent";
 import "./carModels.css";
 
-// === Car Model ===
-const CarModel = () => {
-  const car = useRef();
-  const { scene } = useGLTF("https://raw.githubusercontent.com/jagadeeshmeesala11/porchesmodel_2/main/2015_porsche_918_spyder.glb");
+// --- Car Scene Component ---
+const CarScene = () => {
+  const carRef = useRef();
+  const { scene } = useGLTF(
+    "https://raw.githubusercontent.com/jagadeeshmeesala11/porchesmodel_2/main/2015_porsche_918_spyder.glb"
+  );
+
+  const [paintMeshes, setPaintMeshes] = useState([]);
+  const [targetColor, setTargetColor] = useState(new THREE.Color());
+  const [pulseScale, setPulseScale] = useState(1);
 
   useEffect(() => {
-    scene.rotation.y = -0.5;
-    scene.position.set(1.5, 0, 1);
+    if (!scene) return;
+
+    scene.position.set(0, 0, 0);
     scene.scale.set(75, 75, 75);
+    scene.rotation.y = Math.PI / 2;
+
+    const paints = [];
+
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.material = child.material.clone();
+        const name = child.userData.name || child.name || "";
+        if (name.includes("p:Kit1_Paint_Geo_lodA_Kit1_Paint_Geo_lodA_Porsche_918Spyder")) {
+          paints.push(child);
+        }
+      }
+    });
+
+    setPaintMeshes(paints);
+
+    // Change color every 2 seconds
+    const interval = setInterval(() => {
+      const newColor = new THREE.Color(Math.random(), Math.random(), Math.random());
+      setTargetColor(newColor);
+      setPulseScale(1.1);
+    }, 2000);
+
+    return () => clearInterval(interval);
   }, [scene]);
 
-  useFrame(() => {
-    if (car.current) {
-      car.current.rotation.y -= 0.002;
+  useFrame((state, delta) => {
+    if (paintMeshes.length > 0) {
+      paintMeshes.forEach((mesh) => {
+        mesh.material.color.lerp(targetColor, 0.05);
+      });
     }
+
   });
 
-  return <primitive object={scene} ref={car} />;
+  return <primitive object={scene} ref={carRef} />;
 };
 
-
-// === Background Shader Effect ===
-const AnimatedBackground = () => {
-  const shaderMaterialRef = useRef();
-
-  const shader = useMemo(() => ({
-    uniforms: {
-      time: { value: 0 },
-    },
-    vertexShader: `
-      varying vec2 vUv;
-      void main() {
-        vUv = uv;
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      varying vec2 vUv;
-      uniform float time;
-
-      void main() {
-        float color = 0.5 + 0.5 * sin(time + vUv.x * 10.0) * cos(time + vUv.y * 10.0);
-        gl_FragColor = vec4(vec3(color), 0.15);
-      }
-    `
-  }), []);
-
-  useFrame(({ clock }) => {
-    if (shaderMaterialRef.current) {
-      shaderMaterialRef.current.uniforms.time.value = clock.getElapsedTime();
-    }
-  });
-
-  return (
-    <mesh position={[0, 0, -5]}>
-      <planeGeometry args={[20, 20]} />
-      <shaderMaterial
-        ref={shaderMaterialRef}
-        args={[shader]}
-        transparent
-        depthWrite={false}
-      />
-    </mesh>
-  );
-};
-
-// === Ground Plane ===
-const Plane = () => (
-  <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-    <planeGeometry args={[10, 10]} />
-    <meshStandardMaterial color="black" />
-  </mesh>
-);
-
-// === Main Component ===
 const CarModelsComponent = () => {
   return (
     <div className="carmodel_main_container">
-      <div className="navbar_container">
-        <HeaderComponent />
-      </div>
-
-      <div className="car-text-overlay">
-        <h1 className="heading_car">Porsche 918 Spyder</h1>
-        <p className="para_car">Explore the 3D Showroom</p>
-        <div className="btn-view">
-        <Link to={'/models'} className="view-btn">View Models</Link>
-          </div>
-      </div>
-
+      
       <Canvas
         className="canvas-container"
         shadows
-        camera={{ position: [0, 1, 5], fov: 40 }}
+        camera={{ position: [0, 1, 4], fov: 40 }}
+        style={{ width: "100%", height: "100%", background: "transparent" }}
       >
         <ambientLight intensity={0.8} />
         <directionalLight position={[2, 2, 5]} intensity={3} castShadow />
-        <spotLight position={[0, 5, 0]} angle={0.3} intensity={1.5} />
-        <pointLight intensity={35} color={"white"} position={[0, 2, 0]} />
+        <spotLight position={[0, 4, 0]} angle={0.3} intensity={0.5} />
+        <pointLight intensity={5} color="white" position={[0, 2, 0]} />
+        <OrbitControls enableZoom={true} enablePan={true} />
 
-        <AnimatedBackground />
-        
-        <CarModel />
-        <Plane />
-       
+        <CarScene />
       </Canvas>
     </div>
   );

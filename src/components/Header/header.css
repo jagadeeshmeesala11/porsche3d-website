@@ -1,38 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arial+Narrow&display=swap');
 
-body {
-  background-color: whitesmoke;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-button-link {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font: inherit;
-  text-decoration: none;
-  padding: 0;
-}
-.nav-button-link:hover {
-  text-decoration: underline;
-}
-
-
-/* Header Container */
 .header-container {
-  width: 100vw;
-  background-color: black;
+  width: 100%;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+.home-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.default-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  margin-left: 0px;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
 }
 
-/* Navbar Layout */
 .navbar_container_main {
   max-width: 1280px;
   margin: 0 auto;
@@ -41,12 +31,10 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background-color: black;
 }
 
-/* Logo */
 .logo {
-  font-family: 'Audiowide', cursive;
+  font-family: 'Porsche Next', 'Arial Narrow';
   font-size: 2rem;
   font-weight: bold;
   color: white;
@@ -58,7 +46,6 @@ body {
   color: #FF1493;
 }
 
-/* Navigation Links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -81,7 +68,20 @@ body {
   border-bottom: 2px solid white;
 }
 
-/* Responsive */
+.nav-button-link {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  padding: 0;
+}
+
+.nav-button-link:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
   .navbar_container_main {
     flex-direction: column;

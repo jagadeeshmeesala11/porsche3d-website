@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Ensure AOS CSS is imported
+import './ModelsAds.css';
 import { Link } from 'react-router-dom';
-import './modelpages.css';
-import HeaderComponent from '../Header/HeaderComponent';
-import FooterComponent from '../Footer/FooterComponent';
 
 const carModels = [
   {
@@ -37,10 +35,15 @@ const carModels = [
     file: "https://cdn.jsdelivr.net/gh/jagadeeshmeesala11/porchesmodel_2/Porsche%20Boxster.glb",
     img: "https://i.ibb.co/fz55qrzC/box.jpg"
   },
- 
+  {
+    id: 7,
+    name: "Porsche 718 GT4 RS",
+    img: 'models/porsche 718 GT4 RS.jpg',
+    title: 'The 718 GT4 RS',
+  },
 ];
 
-const ModelsPageComponent = () => {
+const ModelsAds = () => {
   useEffect(() => {
     // Initialize AOS on component mount
     AOS.init({
@@ -59,9 +62,6 @@ const ModelsPageComponent = () => {
 
   return (
     <div className="models-gallery-container">
-      <div >
-      <HeaderComponent />
-      </div>
       <h2 className="gallery-title">Explore Our Car Models</h2>
       <div className="models-grid">
         {carModels.map((carModel) => (
@@ -80,22 +80,9 @@ const ModelsPageComponent = () => {
             </div>
           </div>
         ))}
-        {/* <div className='vid'>
-        <video
-          className="video-model"
-          src="https://res.cloudinary.com/dxg8myqtf/video/upload/v1745742820/porschevideo.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        </div> */}
       </div>
-      <div className="footer-con">
-        <FooterComponent/>
-        </div>
     </div>
   );
 };
 
-export default ModelsPageComponent;
+export default ModelsAds;
